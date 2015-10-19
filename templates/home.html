@@ -1,0 +1,138 @@
+<div class="row" ng-app="CountriesApp">
+    <div class="col-lg-12">
+        <h2>Countries</h2>
+        <div class="Countries-select" ng-controller="CountriesController as countries">
+            <select ng-model="regionName" name="" ng-change="countries.countriesListAction(regionName); countryName=''">
+                <option value="">Select Region</option>
+                <option ng-repeat="region in countries.listRegions" value="{{ region.name }}">
+                    {{ region.name }}
+                </option>
+            </select>
+            <select name="" ng-model="countryName" ng-change="countries.countryInformation( countryName )">
+                <option value="">{{ countries.default }}</option>
+                <option ng-repeat="country in countries.countriesList" value="{{ country.name }}">
+                    {{ country.name }}
+                </option>
+            </select>
+            <hr/>
+            <div ng-show="((countries.countryInfo).length) ? true : false">
+                <div class="col-md-4 col-lg-4">
+                <countries-weather></countries-weather>
+                </div>
+                <div class="col-md-7 col-lg-7">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{ countries.countryInfo[0].name }}</strong>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th class="" colspan="2">Data</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Flag</td>
+                                    <td>
+                                        <img width="50%"
+                                             ng-src="http://www.geonames.org/flags/x/{{ countries.countryInfo[0].alpha2Code | lowercase }}.gif"
+                                             alt="flag country"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Capital</td>
+                                    <td>{{ countries.countryInfo[0].capital }}</td>
+                                </tr>
+                                <tr>
+                                    <td>altSpellings</td>
+                                    <td>
+                                        <ul>
+                                            <li ng-repeat="spelling in countries.countryInfo[0].altSpellings">
+                                                {{ spelling }}
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Relevance</td>
+                                    <td>{{ countries.countryInfo[0].relevance }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Region</td>
+                                    <td>{{ countries.countryInfo[0].region }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Sub Region</td>
+                                    <td>{{ countries.countryInfo[0].subregion }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Translations</td>
+                                    <td>
+                                        <ul>
+                                            <li ng-repeat="(key, translate) in countries.countryInfo[0].translations">
+                                                {{key}}: {{ translate }}
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Population</td>
+                                    <td>{{ countries.countryInfo[0].population }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Lat and lng</td>
+                                    <td>
+                                        <ul>
+                                            <li ng-repeat="latlng in countries.countryInfo[0].latlng">
+                                                {{ latlng }}
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Demonym</td>
+                                    <td>{{ countries.countryInfo[0].demonym }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Area</td>
+                                    <td>{{ countries.countryInfo[0].area }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Gini</td>
+                                    <td>{{ countries.countryInfo[0].gini }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Timezones</td>
+                                    <td>
+                                        <ul>
+                                            <li ng-repeat="timezone in countries.countryInfo[0].timezones">
+                                                {{ timezone }}
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Borders</td>
+                                    <td>
+                                        <ul>
+                                            <li ng-repeat="border in countries.countryInfo[0].borders">
+                                                {{ border }}
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Code</td>
+                                    <td>{{ countries.countryInfo[0].alpha2Code }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
