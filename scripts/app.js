@@ -325,6 +325,7 @@ function PlayFairController() {
     return strTrim;
   }
 
+
   _this.forceBrute = function(){
 
   }
