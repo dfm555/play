@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Weather</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <img class="img-responsive"
+                     ng-src="http://openweathermap.org/img/w/{{ countries.countryInfo[1].weather[0].icon}}.png"
+                     alt="Weather icon"/>
+                <span>{{ countries.countryInfo[1].weather[0].description}}</span>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <span>{{ countries.countryInfo[1].main.temp - 273.15 | number:2 }} ºC</span>
+            </div>
+        </div>
+    </div>
+</div>

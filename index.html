@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Your awesome title</title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="canonical" href="/">
+  <link rel="alternate" type="application/rss+xml" title="Your awesome title" href="/feed.xml" />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js"></script>
+</head>
+
+
+  <body ng-app="CountriesApp">
+    <header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+        <ul class="nav navbar-nav">
+            <li><a href="#/">Paises</a></li>
+            <li><a href="#/playfair">Play Fair</a></li>
+            <li><a href="#/options">Opciones de cuenta</a></li>
+        </ul>
+        </div>
+    </nav>
+</header>
+
+
+    
+
+<div class="container">
+    <div class="Countries ">
+        <div ng-view></div>
+    </div>
+</div>
+
+
+
+
+
+    <footer>
+</footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="scripts/app.js"></script>
+
+
+
+  </body>
+
+</html>
