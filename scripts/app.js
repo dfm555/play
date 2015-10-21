@@ -328,7 +328,7 @@ function PlayFairController( $http ) {
   }
 
   function forceBrute( message ) {
-    $http.get( '/playFair/dictionary/keywords.txt' ).success( function ( responseKeywords ) {
+    $http.get( '/play/dictionary/keywords.txt' ).success( function ( responseKeywords ) {
       var keywordArray = responseKeywords.split( ' ' ), key, arrayClear = [];
       //console.log(responseKeywords);
       keywordArray.forEach( function ( val ) {
