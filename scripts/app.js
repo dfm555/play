@@ -205,7 +205,7 @@ function PlayFairController( $http ) {
 
     if ( method === 'encode' ) {
       _this.result = encode( keyword, message );
-    } else if ( method == 'decodes' ) {
+    } else if ( method === 'decode' ) {
       _this.result = decode( keyword, message );
     } else {
       forceBrute( message );
@@ -328,19 +328,46 @@ function PlayFairController( $http ) {
   }
 
   function forceBrute( message ) {
-    $http.get( '/play/dictionary/keywords.txt' ).success( function ( responseKeywords ) {
-      var keywordArray = responseKeywords.split( '\n' ), key;
+    $http.get( '/playFair/dictionary/keywords.txt' ).success( function ( responseKeywords ) {
+      var keywordArray = responseKeywords.split( ' ' ), key, arrayClear = [];
+      //console.log(responseKeywords);
       keywordArray.forEach( function ( val ) {
         key = (val.toUpperCase()).replace( /[^A-Z]/g, '' );
-        if ( key.length >= 6 ) {
-          var cipher = decode( key, message )
-          if ( responseKeywords.indexOf( cipher ) != -1) {
-            console.log( cipher );
-          }
+        if ( key.length >= 6 && key.length <= 12 ) {
+          var cipher = decode( key, message );
+          //if(cipher == 'ELATAQUEESALASDOCEDELANOCHEX'){
+          //  console.log(cipher);
+          //}
+          //var test = getIndicesOf(cipher, responseKeywords.toUpperCase(), false);
+          //
+          //if(test.length > 0){
+          //  console.log(test);
+          //
+          //}
+
+
+          //if ( responseKeywords.indexOf( cipher ) != -1) {
+          //  //console.log( cipher );
+          //}
+          _this.result = cipher;
         }
       } );
 
 
     } );
+  }
+
+  function getIndicesOf(searchStr, str, caseSensitive) {
+    var startIndex = 0, searchStrLen = searchStr.length;
+    var index, indices = [];
+    if (!caseSensitive) {
+      str = str.toLowerCase();
+      searchStr = searchStr.toLowerCase();
+    }
+    while ((index = str.indexOf(searchStr, startIndex)) > -1) {
+      indices.push(index);
+      startIndex = index + searchStrLen;
+    }
+    return indices;
   }
 }
