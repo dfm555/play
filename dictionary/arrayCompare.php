@@ -12,4 +12,4 @@ foreach( $arrayMessages as $rowMessage ){
 	}
 }
 
-echo json_encode(arrayKeywords);
+echo json_encode($arrayKeywords);
