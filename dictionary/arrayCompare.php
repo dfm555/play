@@ -7,7 +7,6 @@ $arrayCipher = array();
 foreach( $arrayMessages as $rowMessage ){
 	foreach( $arrayKeywords as $rowKeyword ){
 		$pos = strpos($rowMessage, $rowKeyword);
-		print_r($pos);
 		if( !$pos === false ){
 			array_push($arrayCipher, $arrayMessages);
 		}
