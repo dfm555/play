@@ -1,6 +1,6 @@
 <?php
-$arrayKeywords = $_POST['keywords'];
-$arrayMessages = $_POST['messages'];
+$arrayKeywords = json_decode($_POST['keywords']);
+$arrayMessages = json_decode$_POST['messages']);
 print_r($arrayKeywords);
 $arrayCipher = array();
 foreach( $arrayMessages as $rowMessage ){
