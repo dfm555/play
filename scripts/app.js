@@ -328,7 +328,7 @@ function PlayFairController( $http ) {
   }
 
   function forceBrute( message ) {
-    $http.get( '/play/dictionary/keywords.txt' ).success( function ( responseKeywords ) {
+    $http.get( '/dictionary/keywords.txt' ).success( function ( responseKeywords ) {
       var keywordArray = responseKeywords.split( ' ' ),
         key,
         keywordsClean = [],
