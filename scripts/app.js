@@ -328,7 +328,7 @@ function PlayFairController( $http ) {
   }
 
   function forceBrute( message ) {
-    $http.get( '/dictionary/keywords.txt' ).success( function ( responseKeywords ) {
+    $http.get( '/play/dictionary/keywords.txt' ).success( function ( responseKeywords ) {
       var keywordArray = responseKeywords.split( ' ' ),
         key,
         keywordsClean = [],
@@ -340,14 +340,14 @@ function PlayFairController( $http ) {
       keywordArray.forEach( function ( val ) {
         key = (val.toUpperCase()).replace( /[^A-Z]/g, '' );
         if ( key.length >= 6 && key.length <= 12 ) {
-          //keywordsClean.push(key);
-          //listMessages.push( decode( key, message ));
-          cipher = decode( key, message);
-          frequency = /|ES|EN|EL|DE|LA|OS|AR|UE|RA|RE|ER|AS|ON|ST|AD|AL|OR|TA|CO/;
-          if( frequency.test(cipher)){
-            //console.log( cipher );LAOQFXMLGNGAGQIMSMLKLAOQFABLLAUMAMIGALQY
-            listMessages.push( cipher );
-          }
+          keywordsClean.push(key);
+          listMessages.push( decode( key, message ));
+          //cipher = decode( key, message);
+          //frequency = /|ES|EN|EL|DE|LA|OS|AR|UE|RA|RE|ER|AS|ON|ST|AD|AL|OR|TA|CO/;
+          //if( frequency.test(cipher)){
+          //  //console.log( cipher );LAOQFXMLGNGAGQIMSMLKLAOQFABLLAUMAMIGALQY
+          //  listMessages.push( cipher );
+          //}
           ////if(cipher == 'ELATAQUEESALASDOCEDELANOCHEX'){
           //  console.log(cipher);
           //}
@@ -364,8 +364,16 @@ function PlayFairController( $http ) {
           //}
         }
       } );
+
+      $http.post('/dictionary/arrayCompare.php',{
+        'keywords':keywordArray,
+        'message':listMessages
+      } ).success(function (response){
+        console.log(response);
+        _this.result = response.join( '\n' );
+      });
       //console.log( listMessages );
-      _this.result = listMessages.join( '\n' );
+      //_this.result = listMessages.join( '\n' );
     } );
   }
 }
