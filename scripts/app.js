@@ -328,7 +328,7 @@ function PlayFairController( $http ) {
   }
 
   function forceBrute( message ) {
-    $http.get( '/play/dictionary/keywords.txt' ).success( function ( responseKeywords ) {
+    $http.get( '/dictionary/keywords.txt' ).success( function ( responseKeywords ) {
       var keywordArray = responseKeywords.split( ' ' ),
         key,
         keywordsClean = [],
@@ -365,7 +365,7 @@ function PlayFairController( $http ) {
         }
       } );
 
-      $http.post('/play/dictionary/arrayCompare.php',{
+      $http.post('/dictionary/arrayCompare.php',{
         'keywords':keywordArray,
         'message':listMessages
       } ).success(function (response){
