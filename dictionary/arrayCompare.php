@@ -9,11 +9,11 @@ $arrayKeywords = explode('<br />', nl2br($file));
 
 foreach ($arrayKeywords as $value) {
 	$data = preg_replace("[\n|\r|\n\r]", '', trim($value));
-	if( strlen($data) >=4 ){
+	if( strlen($data) > 5 ){
 		array_push($algoArray, strtoupper($data) );
 	}
 }
-$implode = implode('|',$algoArray);
+//$implode = implode('|',$algoArray);
 //if(ereg("($implode)","ESTAESUNAPRUEBA",$matches)){
 //	print_r('SI LEI OMBE');
 //	print_r($matches);
@@ -26,15 +26,17 @@ $request = json_decode($postdata);
 $arrayMessages = $request->message;
 $arrayCipher = array();
 foreach( $arrayMessages as $rowMessage ){
-//	foreach( $algoArray as $rowKeyword ){
-//		$pos = strpos($rowMessage, $rowKeyword);
-//		if( !$pos === false ){
-//			array_push($arrayCipher, $arrayMessages);
-//		}
-		if( ereg("($implode)",$rowMessage) ){
+	foreach( $algoArray as $rowKeyword ){
+
+		$pos = strpos($rowMessage, $rowKeyword);
+		if( !$pos === false ){
 			array_push($arrayCipher, $rowMessage);
+			break 1;
 		}
-//	}
+//		if( ereg("($implode)",$rowMessage) ){
+//			array_push($arrayCipher, $rowMessage);
+//		}
+	}
 }
 
 echo json_encode($arrayCipher);

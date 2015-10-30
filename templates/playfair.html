@@ -12,11 +12,15 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" ng-minlength="5"  ng-hide="( method === 'force' )" ng-model="keyword" placeholder="Add your keyword" type="text" name="" />
+                    <input class="form-control"
+                           ng-minlength="5"
+                           ng-hide="( method === 'force' )"
+                           ng-model="keyword" ng-required="( method !== 'force' )"
+                           placeholder="Add your keyword" type="text" name="" />
                 </div>
                 <div class="form-group">
                     <input class="form-control" ng-model="message" placeholder="Add your message" type="text" name="" required/>
-                </div>                
+                </div>
                 <div class="form-group">
                     <input  class="btn btn-success" type="submit" value="Submit"/>
                 </div>
@@ -28,20 +32,20 @@
                     <h3 class="panel-title">Matrix</h3>
                 </div>
                 <div class="panel-body">
-                   <table class="table table-bordered" ng-show="playFair.showMatrix">
-                       <thead>
-                       <tr>
-                           <th colspan="5">{{ playFair.keyword }}</th>
-                       </tr>
-                       </thead>
-                       <tbody>
-                       <tr ng-repeat="matrix in  playFair.showMatrix">
-                          <td ng-repeat="row in matrix">
-                              {{ row }}
-                          </td>
-                       </tr>
-                       </tbody>
-                   </table>
+                    <table class="table table-bordered" ng-show="playFair.showMatrix">
+                        <thead>
+                        <tr>
+                            <th colspan="5">{{ playFair.keyword }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="matrix in  playFair.showMatrix">
+                            <td ng-repeat="row in matrix">
+                                {{ row }}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="panel panel-default">
@@ -53,7 +57,7 @@
                     <br/>
                     Your keyword:
                     <code>
-                         {{ playFair.keyword }}
+                        {{ playFair.keyword }}
                     </code>
                     <br/>
                     Your message: {{ playFair.message }}
@@ -72,9 +76,11 @@
                 <h3 class="panel-title">Results messages </h3>
             </div>
             <div class="panel-body">
-               <span ng-repeat="msj in playFair.messageForce">
-                   {{ msj }}
-               </span>
+                <ol>
+                    <li ng-repeat="msj in playFair.messageForce track by $index">
+                        {{ msj }}
+                    </li>
+                </ol>
             </div>
         </div>
     </div>
