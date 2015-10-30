@@ -198,7 +198,8 @@ function PlayFairController( $http ) {
   _this.result = '';
   _this.message = '';
   _this.messageToCipher = '';
-  _this.showMatrix = [];
+  _this.showMatrix = [],
+  _this.messageForce = [] ;
   alphabet = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ];
 
   _this.addValues = function ( method, keyword, message ) {
@@ -342,7 +343,7 @@ function PlayFairController( $http ) {
       $http.post('/play/dictionary/arrayCompare.php',{
         'message':listMessages
       } ).success(function (response){
-        _this.result = response.join( '\n' );
+        _this.messageForce = response;
       });
     } );
   }

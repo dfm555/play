@@ -12,7 +12,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" ng-minlength="5" ng-model="keyword" placeholder="Add your keyword" type="text" name="" required/>
+                    <input class="form-control" ng-minlength="5"  ng-hide="( method === 'force' )" ng-model="keyword" placeholder="Add your keyword" type="text" name="" />
                 </div>
                 <div class="form-group">
                     <input class="form-control" ng-model="message" placeholder="Add your message" type="text" name="" required/>
@@ -62,6 +62,19 @@
                     <br/>
                     Play Fair Result: {{playFair.result}}
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-md-12">
+        <div class="panel panel-default" ng-show="((playFair.messageForce).length) ? true : false">
+            <div class="panel-heading">
+                <h3 class="panel-title">Results messages </h3>
+            </div>
+            <div class="panel-body">
+               <span ng-repeat="msj in playFair.messageForce">
+                   {{ msj }}
+               </span>
             </div>
         </div>
     </div>
